@@ -8,7 +8,7 @@
  * @parameters : CircularBufferTypeDef* buff - Pointer to the circular buffer structure.
  * @retvalue   : None
  ***********************************************************************************************/
-void BUFFER_ResetCircular(CircularBufferTypeDef* buff)
+static void BUFFER_ResetCircular(CircularBufferTypeDef* buff)
 {
     buff->readIndex = 0;
     buff->writeIndex = 0;
@@ -21,7 +21,7 @@ void BUFFER_ResetCircular(CircularBufferTypeDef* buff)
  * @parameters : ClipBufferTypeDef* clip - Pointer to the clip buffer structure.
  * @retvalue   : None
  ***********************************************************************************************/
-void BUFFER_ResetClip(ClipBufferTypeDef* clip)
+static void BUFFER_ResetClip(ClipBufferTypeDef* clip)
 {
     memset(clip->data, 0, clip->capacity);
 }

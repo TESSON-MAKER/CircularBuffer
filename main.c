@@ -14,7 +14,7 @@ int main()
     ClipBufferTypeDef clip;
     
     // Initialize the circular buffer with the array, capacity, and a pointer to the data
-    BUFFER_Init(&buffer, bufferArray, BUFFER_CAPACITY);
+    BUFFER_CircularInit(&buffer, bufferArray, BUFFER_CAPACITY);
     BUFFER_ClipInit(&clip, clipArray, BUFFER_CAPACITY);
     
     // Push some data into the buffer (1)

@@ -20,8 +20,8 @@ typedef struct {
 } ClipBufferTypeDef;
 
 // Function prototypes
-void BUFFER_ResetCircular(CircularBufferTypeDef* buff);
-void BUFFER_ResetClip(ClipBufferTypeDef* clip);
+void BUFFER_CircularInit(CircularBufferTypeDef* buff, uint8_t* bufferArray, uint16_t capacity);
+void BUFFER_ClipInit(ClipBufferTypeDef* clip, uint8_t* clipArray, uint16_t capacity);
 uint16_t BUFFER_Length(CircularBufferTypeDef* buff);
 uint8_t BUFFER_Push(CircularBufferTypeDef* buff, uint8_t data);
 uint8_t BUFFER_PopData(CircularBufferTypeDef* buff, uint8_t* data);
