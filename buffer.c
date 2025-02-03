@@ -4,7 +4,7 @@
 /***********************************************************************************************
  * @name       : BUFFER_ResetCircular
  * @function   : Resets the circular buffer by setting the read and write indices to 0
- *               and clearing its content.
+ *               and clearing its content. 
  * @parameters : CircularBufferTypeDef* buff - Pointer to the circular buffer structure.
  * @retvalue   : None
  ***********************************************************************************************/
