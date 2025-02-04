@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "buffer.h"
 
-#define BUFFER_CAPACITY 10
+#define BUFFER_CAPACITY 6
 
 int main() 
 {
@@ -21,35 +21,18 @@ int main()
     BUFFER_Write(&buffer, 1);
     BUFFER_Write(&buffer, 2);
     BUFFER_Write(&buffer, 3);
+    BUFFER_Write(&buffer, 4);
+    BUFFER_Write(&buffer, 5);
+    BUFFER_Write(&buffer, 6);
+    BUFFER_Write(&buffer, 7);
+    BUFFER_Write(&buffer, 8);
 
-    printf("Buffer size after writing 3 elements: %d\n", BUFFER_Length(&buffer));
-
-    // Pop all remaining data from the buffer and store it in the clip
-    if (BUFFER_PopAllData(&buffer, &clip)) {
-        printf("Data extracted to clip: ");
-        for (int i = 0; i < clip.size; i++) {
-            printf("%d ", clip.data[i]);
-        }
-        printf("\n");
-    } else {
-        printf("Buffer was empty, nothing extracted.\n");
-    }
+    BUFFER_PopAllData(&buffer, &clip);
 
     // Write another piece of data into the buffer
     BUFFER_Write(&buffer, 9);
     
-    printf("Buffer size after writing one more element: %d\n", BUFFER_Length(&buffer));
-
-    // Pop all remaining data from the buffer and store it in the clip
-    if (BUFFER_PopAllData(&buffer, &clip)) {
-        printf("Data extracted to clip: ");
-        for (int i = 0; i < clip.size; i++) {
-            printf("%d ", clip.data[i]);
-        }
-        printf("\n");
-    } else {
-        printf("Buffer was empty, nothing extracted.\n");
-    }
+    BUFFER_PopAllData(&buffer, &clip);
 
     return 0; // End of the program execution
 }

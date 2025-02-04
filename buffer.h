@@ -8,7 +8,7 @@
 typedef struct {
     uint8_t* data;          // Pointer to buffer memory (array of bytes)
     uint16_t capacity;      // Maximum capacity of the buffer (number of elements it can hold)
-    uint16_t size;          // Size of buffer busy
+    uint16_t size;          // Current number of elements stored
     uint16_t readIndex;     // Index of the element to be read
     uint16_t writeIndex;    // Index of the element to be written
 } CircularBufferTypeDef;
@@ -17,7 +17,7 @@ typedef struct {
 typedef struct {
     uint8_t* data;          // Pointer to the extracted data (array of bytes)
     uint8_t capacity;       // Maximum capacity of the buffer (number of elements it can hold)
-    uint8_t size;         // Current number of elements stored
+    uint8_t size;           // Current number of elements stored
 } ClipBufferTypeDef;
 
 // Function prototypes
