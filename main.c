@@ -17,17 +17,39 @@ int main()
     BUFFER_CircularInit(&buffer, bufferArray, BUFFER_CAPACITY);
     BUFFER_ClipInit(&clip, clipArray, BUFFER_CAPACITY);
     
-    // Push some data into the buffer (1)
-    BUFFER_Push(&buffer, 1);
+    // Write some data into the buffer
+    BUFFER_Write(&buffer, 1);
+    BUFFER_Write(&buffer, 2);
+    BUFFER_Write(&buffer, 3);
+
+    printf("Buffer size after writing 3 elements: %d\n", BUFFER_Length(&buffer));
 
     // Pop all remaining data from the buffer and store it in the clip
-    BUFFER_PopAllData(&buffer, &clip);
+    if (BUFFER_PopAllData(&buffer, &clip)) {
+        printf("Data extracted to clip: ");
+        for (int i = 0; i < clip.size; i++) {
+            printf("%d ", clip.data[i]);
+        }
+        printf("\n");
+    } else {
+        printf("Buffer was empty, nothing extracted.\n");
+    }
 
-    // Push another piece of data into the buffer (9)
-    BUFFER_Push(&buffer, 9);
+    // Write another piece of data into the buffer
+    BUFFER_Write(&buffer, 9);
+    
+    printf("Buffer size after writing one more element: %d\n", BUFFER_Length(&buffer));
 
     // Pop all remaining data from the buffer and store it in the clip
-    BUFFER_PopAllData(&buffer, &clip);
+    if (BUFFER_PopAllData(&buffer, &clip)) {
+        printf("Data extracted to clip: ");
+        for (int i = 0; i < clip.size; i++) {
+            printf("%d ", clip.data[i]);
+        }
+        printf("\n");
+    } else {
+        printf("Buffer was empty, nothing extracted.\n");
+    }
 
     return 0; // End of the program execution
 }
