@@ -87,7 +87,7 @@ uint8_t BUFFER_Write(CircularBufferTypeDef* buff, uint8_t data)
     buff->data[buff->writeIndex] = data;
     buff->writeIndex = (buff->writeIndex + 1) % buff->capacity;
     buff->size++;
-    return 1;
+    return 0;
 }
 
 /***********************************************************************************************
@@ -99,11 +99,11 @@ uint8_t BUFFER_Write(CircularBufferTypeDef* buff, uint8_t data)
  ***********************************************************************************************/
 uint8_t BUFFER_PopData(CircularBufferTypeDef* buff, uint8_t* data) 
 {
-    if (buff->size == 0) return 0; // Buffer empty
+    if (buff->size == 0) return 1; // Buffer empty
     *data = buff->data[buff->readIndex];
     buff->readIndex = (buff->readIndex + 1) % buff->capacity;
     buff->size--;
-    return 1;
+    return 0;
 }
 
 /***********************************************************************************************
@@ -111,14 +111,14 @@ uint8_t BUFFER_PopData(CircularBufferTypeDef* buff, uint8_t* data)
  * @function   : Pops all data from the circular buffer into a clip buffer.
  * @parameters : CircularBufferTypeDef* buff - Pointer to the circular buffer structure.
  *               ClipBufferTypeDef* clip - Pointer to the clip buffer to store the extracted data.
- * @retvalue   : uint8_t - 1 if successful, 0 if buffer is empty.
+ * @retvalue   : uint8_t - 0 if successful, 1 if buffer is empty.
  ***********************************************************************************************/
 uint8_t BUFFER_PopAllData(CircularBufferTypeDef* buff, ClipBufferTypeDef* clip) 
 {
     if (buff->size == 0) 
     {
         clip->size = 0;
-        return 0; // Buffer empty
+        return 1; // Buffer empty
     }
 
     uint16_t count;
@@ -134,5 +134,5 @@ uint8_t BUFFER_PopAllData(CircularBufferTypeDef* buff, ClipBufferTypeDef* clip)
 
     buff->size -= count;
     clip->size = count;
-    return 1;
+    return 0;
 }
